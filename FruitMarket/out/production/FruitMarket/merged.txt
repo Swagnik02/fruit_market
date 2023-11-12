@@ -1,0 +1,1356 @@
+Date: 2023-11-10 13:34:11
+
+Root File Path: d:\CODING\PROJECT\Fruits-Market\FruitMarket\src
+Directory Tree:
+- src/
+    - Controller/
+        - ItemController.java
+        - MarketController.java
+    - main/
+        - Main.java
+        - MyListener.java
+    - model/
+        - Fruit.java
+    - values/
+        - style.css
+    - views/
+        - item.fxml
+        - market.fxml
+
+
+--- Controller/ItemController.java ---
+package Controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import main.Main;
+import main.MyListener;
+import model.Fruit;
+
+public class ItemController {
+    @FXML
+    private Label nameLabel;
+
+    @FXML
+    private Label priceLable;
+
+    @FXML
+    private ImageView img;
+
+    @FXML
+    private void click(MouseEvent mouseEvent) {
+        myListener.onClickListener(fruit);
+    }
+
+    private Fruit fruit;
+    private MyListener myListener;
+
+    public void setData(Fruit fruit, MyListener myListener) {
+        this.fruit = fruit;
+        this.myListener = myListener;
+        nameLabel.setText(fruit.getName());
+        priceLable.setText(Main.CURRENCY + fruit.getPrice());
+        Image image = new Image(getClass().getResourceAsStream(fruit.getImgSrc()));
+        img.setImage(image);
+    }
+}
+
+
+--- Controller/ItemController.java ---
+package Controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import main.Main;
+import main.MyListener;
+import model.Fruit;
+
+public class ItemController {
+    @FXML
+    private Label nameLabel;
+
+    @FXML
+    private Label priceLable;
+
+    @FXML
+    private ImageView img;
+
+    @FXML
+    private void click(MouseEvent mouseEvent) {
+        myListener.onClickListener(fruit);
+    }
+
+    private Fruit fruit;
+    private MyListener myListener;
+
+    public void setData(Fruit fruit, MyListener myListener) {
+        this.fruit = fruit;
+        this.myListener = myListener;
+        nameLabel.setText(fruit.getName());
+        priceLable.setText(Main.CURRENCY + fruit.getPrice());
+        Image image = new Image(getClass().getResourceAsStream(fruit.getImgSrc()));
+        img.setImage(image);
+    }
+}
+
+
+--- Controller/MarketController.java ---
+package Controller;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import main.Main;
+import main.MyListener;
+import model.Fruit;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class MarketController implements Initializable {
+    @FXML
+    private VBox chosenFruitCard;
+
+    @FXML
+    private Label fruitNameLable;
+
+    @FXML
+    private Label fruitPriceLabel;
+
+    @FXML
+    private ImageView fruitImg;
+
+    @FXML
+    private ScrollPane scroll;
+
+    @FXML
+    private GridPane grid;
+
+    private List<Fruit> fruits = new ArrayList<>();
+    private Image image;
+    private MyListener myListener;
+
+    private List<Fruit> getData() {
+        List<Fruit> fruits = new ArrayList<>();
+        Fruit fruit;
+
+        fruit = new Fruit();
+        fruit.setName("Kiwi");
+        fruit.setPrice(100.0);
+        fruit.setImgSrc("/img/kiwi.png");
+        fruit.setColor("6A7324");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Coconut");
+        fruit.setPrice(50.0);
+        fruit.setImgSrc("/img/coconut.png");
+        fruit.setColor("A7745B");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Peach");
+        fruit.setPrice(90.0);
+        fruit.setImgSrc("/img/peach.png");
+        fruit.setColor("F16C31");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Grapes");
+        fruit.setPrice(38.0);
+        fruit.setImgSrc("/img/grapes.png");
+        fruit.setColor("291D36");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Watermelon");
+        fruit.setPrice(60.0);
+        fruit.setImgSrc("/img/watermelon.png");
+        fruit.setColor("22371D");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Orange");
+        fruit.setPrice(35.0);
+        fruit.setImgSrc("/img/orange.png");
+        fruit.setColor("FB5D03");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("StrawBerry");
+        fruit.setPrice(80);
+        fruit.setImgSrc("/img/strawberry.png");
+        fruit.setColor("80080C");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Mango");
+        fruit.setPrice(45.0);
+        fruit.setImgSrc("/img/mango.png");
+        fruit.setColor("FFB605");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Cherry");
+        fruit.setPrice(150.0);
+        fruit.setImgSrc("/img/cherry.png");
+        fruit.setColor("5F060E");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Banana");
+        fruit.setPrice(36.0);
+        fruit.setImgSrc("/img/banana.png");
+        fruit.setColor("E7C00F");
+        fruits.add(fruit);
+
+        return fruits;
+    }
+
+    private void setChosenFruit(Fruit fruit) {
+        fruitNameLable.setText(fruit.getName());
+        fruitPriceLabel.setText(Main.CURRENCY + fruit.getPrice());
+        image = new Image(getClass().getResourceAsStream(fruit.getImgSrc()));
+        fruitImg.setImage(image);
+        chosenFruitCard.setStyle("-fx-background-color: #" + fruit.getColor() + ";\n" +
+                "    -fx-background-radius: 30;");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        fruits.addAll(getData());
+        if (fruits.size() > 0) {
+            setChosenFruit(fruits.get(0));
+            myListener = new MyListener() {
+                @Override
+                public void onClickListener(Fruit fruit) {
+                    setChosenFruit(fruit);
+                }
+            };
+        }
+        int column = 0;
+        int row = 1;
+        try {
+            for (int i = 0; i < fruits.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/views/item.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(fruits.get(i),myListener);
+
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+
+
+--- Controller/MarketController.java ---
+package Controller;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import main.Main;
+import main.MyListener;
+import model.Fruit;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class MarketController implements Initializable {
+    @FXML
+    private VBox chosenFruitCard;
+
+    @FXML
+    private Label fruitNameLable;
+
+    @FXML
+    private Label fruitPriceLabel;
+
+    @FXML
+    private ImageView fruitImg;
+
+    @FXML
+    private ScrollPane scroll;
+
+    @FXML
+    private GridPane grid;
+
+    private List<Fruit> fruits = new ArrayList<>();
+    private Image image;
+    private MyListener myListener;
+
+    private List<Fruit> getData() {
+        List<Fruit> fruits = new ArrayList<>();
+        Fruit fruit;
+
+        fruit = new Fruit();
+        fruit.setName("Kiwi");
+        fruit.setPrice(100.0);
+        fruit.setImgSrc("/img/kiwi.png");
+        fruit.setColor("6A7324");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Coconut");
+        fruit.setPrice(50.0);
+        fruit.setImgSrc("/img/coconut.png");
+        fruit.setColor("A7745B");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Peach");
+        fruit.setPrice(90.0);
+        fruit.setImgSrc("/img/peach.png");
+        fruit.setColor("F16C31");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Grapes");
+        fruit.setPrice(38.0);
+        fruit.setImgSrc("/img/grapes.png");
+        fruit.setColor("291D36");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Watermelon");
+        fruit.setPrice(60.0);
+        fruit.setImgSrc("/img/watermelon.png");
+        fruit.setColor("22371D");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Orange");
+        fruit.setPrice(35.0);
+        fruit.setImgSrc("/img/orange.png");
+        fruit.setColor("FB5D03");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("StrawBerry");
+        fruit.setPrice(80);
+        fruit.setImgSrc("/img/strawberry.png");
+        fruit.setColor("80080C");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Mango");
+        fruit.setPrice(45.0);
+        fruit.setImgSrc("/img/mango.png");
+        fruit.setColor("FFB605");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Cherry");
+        fruit.setPrice(150.0);
+        fruit.setImgSrc("/img/cherry.png");
+        fruit.setColor("5F060E");
+        fruits.add(fruit);
+
+        fruit = new Fruit();
+        fruit.setName("Banana");
+        fruit.setPrice(36.0);
+        fruit.setImgSrc("/img/banana.png");
+        fruit.setColor("E7C00F");
+        fruits.add(fruit);
+
+        return fruits;
+    }
+
+    private void setChosenFruit(Fruit fruit) {
+        fruitNameLable.setText(fruit.getName());
+        fruitPriceLabel.setText(Main.CURRENCY + fruit.getPrice());
+        image = new Image(getClass().getResourceAsStream(fruit.getImgSrc()));
+        fruitImg.setImage(image);
+        chosenFruitCard.setStyle("-fx-background-color: #" + fruit.getColor() + ";\n" +
+                "    -fx-background-radius: 30;");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        fruits.addAll(getData());
+        if (fruits.size() > 0) {
+            setChosenFruit(fruits.get(0));
+            myListener = new MyListener() {
+                @Override
+                public void onClickListener(Fruit fruit) {
+                    setChosenFruit(fruit);
+                }
+            };
+        }
+        int column = 0;
+        int row = 1;
+        try {
+            for (int i = 0; i < fruits.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/views/item.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(fruits.get(i),myListener);
+
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+
+
+--- main/Main.java ---
+package main;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    public static final String CURRENCY = "₹";
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("../views/market.fxml"));
+        primaryStage.setTitle("Fruits Marker");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+
+--- main/Main.java ---
+package main;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    public static final String CURRENCY = "₹";
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("../views/market.fxml"));
+        primaryStage.setTitle("Fruits Marker");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+
+--- main/MyListener.java ---
+package main;
+
+import model.Fruit;
+
+public interface MyListener {
+    public void onClickListener(Fruit fruit);
+}
+
+
+--- main/MyListener.java ---
+package main;
+
+import model.Fruit;
+
+public interface MyListener {
+    public void onClickListener(Fruit fruit);
+}
+
+
+--- model/Fruit.java ---
+package model;
+
+public class Fruit {
+    private String name;
+    private String imgSrc;
+    private double price;
+    private String color;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImgSrc() {
+        return imgSrc;
+    }
+
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+}
+
+
+--- model/Fruit.java ---
+package model;
+
+public class Fruit {
+    private String name;
+    private String imgSrc;
+    private double price;
+    private String color;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImgSrc() {
+        return imgSrc;
+    }
+
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+}
+
+
+--- values/style.css ---
+.search-box{
+    -fx-background-color:#FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.search-button{
+    -fx-background-color: #828282;
+    -fx-background-radius: 30;
+}
+
+.right-bar{
+    -fx-background-color: #D3D3D3;
+}
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+
+.chosen-fruit-card{
+    -fx-background-color: #F16C31;
+    -fx-background-radius: 30;
+}
+
+.comboBox{
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-radius: 30;
+}
+
+.add-btn{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.free-delivery-card{
+    -fx-background-color: #D3D3D3;
+    -fx-background-radius: 30;
+}
+
+.shopping-online-card{
+    -fx-background-color: #BAEAC3;
+    -fx-background-radius: 30;
+}
+
+.fruit-item{
+    -fx-background-color: #FFFFFF;
+        -fx-background-radius: 30;
+}
+
+--- values/style.css ---
+.search-box{
+    -fx-background-color:#FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.search-button{
+    -fx-background-color: #828282;
+    -fx-background-radius: 30;
+}
+
+.right-bar{
+    -fx-background-color: #D3D3D3;
+}
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+
+.chosen-fruit-card{
+    -fx-background-color: #F16C31;
+    -fx-background-radius: 30;
+}
+
+.comboBox{
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-radius: 30;
+}
+
+.add-btn{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.free-delivery-card{
+    -fx-background-color: #D3D3D3;
+    -fx-background-radius: 30;
+}
+
+.shopping-online-card{
+    -fx-background-color: #BAEAC3;
+    -fx-background-radius: 30;
+}
+
+.fruit-item{
+    -fx-background-color: #FFFFFF;
+        -fx-background-radius: 30;
+}
+
+--- views/item.fxml ---
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane onMousePressed="#click" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ItemController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="215.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="51.0" prefWidth="185.0">
+               <children>
+                  <Label fx:id="nameLabel" prefHeight="49.0" prefWidth="137.0" text="Cherry">
+                     <font>
+                        <Font name="Cambria" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="priceLable" prefHeight="49.0" prefWidth="101.0" text="\$0.99">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <ImageView fx:id="img" fitHeight="115.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/cherry.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="fruit-item" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>
+
+
+--- views/item.fxml ---
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane onMousePressed="#click" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ItemController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="215.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="51.0" prefWidth="185.0">
+               <children>
+                  <Label fx:id="nameLabel" prefHeight="49.0" prefWidth="137.0" text="Cherry">
+                     <font>
+                        <Font name="Cambria" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="priceLable" prefHeight="49.0" prefWidth="101.0" text="\$0.99">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <ImageView fx:id="img" fitHeight="115.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/cherry.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="fruit-item" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>
+
+
+--- views/market.fxml ---
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MarketController">
+   <children>
+      <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="49.0" prefWidth="128.0" text="Fruits" textFill="#878787">
+                           <font>
+                              <Font name="Cambria Bold" size="40.0" />
+                           </font>
+                        </Label>
+                        <Label text="Market" textFill="#878787">
+                           <font>
+                              <Font name="Cambria" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" stylesheets="@../values/style.css" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../values/style.css">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../values/style.css" text="Search" textFill="WHITE" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="search-box" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </HBox>
+                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                  <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="535.0" prefWidth="100.0" stylesheets="@../values/style.css">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                     <children>
+                        <HBox prefHeight="60.0" prefWidth="335.0">
+                           <children>
+                              <Label fx:id="fruitNameLable" prefHeight="48.0" prefWidth="276.0" text="Peach" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="36.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="fruitPriceLabel" prefHeight="57.0" prefWidth="171.0" text="\$2.99" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="20.0" top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ImageView fx:id="fruitImg" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/peach.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                           <children>
+                              <Label prefHeight="53.0" prefWidth="167.0" text="Kg" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="1" styleClass="comboBox" stylesheets="@../values/style.css" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="20.0" />
+                           </VBox.margin>
+                           <children>
+                              <Separator prefHeight="0.0" prefWidth="118.0" />
+                              <Label alignment="CENTER" prefHeight="45.0" prefWidth="64.0" text="or" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Separator prefHeight="0.0" prefWidth="118.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                           <children>
+                              <Label prefHeight="53.0" prefWidth="167.0" text="Kg" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="selected" styleClass="comboBox" stylesheets="@../values/style.css" />
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="ADD TO CART" textFill="#828282">
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="30.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <styleClass>
+                        <String fx:value="chosen-fruit-card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </VBox>
+                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label prefHeight="29.0" prefWidth="88.0" text="language" textFill="#878787">
+                           <font>
+                              <Font name="Cambria Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="29.0" prefWidth="77.0" text="English" textFill="#878787" underline="true">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
+                        <Label prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/ic_cart.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="84.0" prefWidth="96.0" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../values/style.css">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="190.0" text="Free delivery" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="16.0" prefWidth="190.0" text="over $20 order" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/ic_delivery.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../values/style.css">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="190.0" text="Shopping online" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="20.0" prefWidth="207.0" text="get your shopping in same day" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/ic_stopwatch.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="84.0" prefWidth="96.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="570.0" prefWidth="785.0" styleClass="transparent" stylesheets="@../values/style.css">
+                           <content>
+                              <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
+
+
+--- views/market.fxml ---
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MarketController">
+   <children>
+      <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="49.0" prefWidth="128.0" text="Fruits" textFill="#878787">
+                           <font>
+                              <Font name="Cambria Bold" size="40.0" />
+                           </font>
+                        </Label>
+                        <Label text="Market" textFill="#878787">
+                           <font>
+                              <Font name="Cambria" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" stylesheets="@../values/style.css" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../values/style.css">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../values/style.css" text="Search" textFill="WHITE" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="search-box" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </HBox>
+                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                  <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="535.0" prefWidth="100.0" stylesheets="@../values/style.css">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                     <children>
+                        <HBox prefHeight="60.0" prefWidth="335.0">
+                           <children>
+                              <Label fx:id="fruitNameLable" prefHeight="48.0" prefWidth="276.0" text="Peach" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="36.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="fruitPriceLabel" prefHeight="57.0" prefWidth="171.0" text="\$2.99" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="20.0" top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <ImageView fx:id="fruitImg" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/peach.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                           <children>
+                              <Label prefHeight="53.0" prefWidth="167.0" text="Kg" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="1" styleClass="comboBox" stylesheets="@../values/style.css" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="20.0" />
+                           </VBox.margin>
+                           <children>
+                              <Separator prefHeight="0.0" prefWidth="118.0" />
+                              <Label alignment="CENTER" prefHeight="45.0" prefWidth="64.0" text="or" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Separator prefHeight="0.0" prefWidth="118.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                           <children>
+                              <Label prefHeight="53.0" prefWidth="167.0" text="Kg" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="selected" styleClass="comboBox" stylesheets="@../values/style.css" />
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="ADD TO CART" textFill="#828282">
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="30.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <styleClass>
+                        <String fx:value="chosen-fruit-card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </VBox>
+                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label prefHeight="29.0" prefWidth="88.0" text="language" textFill="#878787">
+                           <font>
+                              <Font name="Cambria Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="29.0" prefWidth="77.0" text="English" textFill="#878787" underline="true">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
+                        <Label prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/ic_cart.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="84.0" prefWidth="96.0" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../values/style.css">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="190.0" text="Free delivery" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="16.0" prefWidth="190.0" text="over $20 order" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/ic_delivery.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../values/style.css">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="190.0" text="Shopping online" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="20.0" prefWidth="207.0" text="get your shopping in same day" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/ic_stopwatch.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="84.0" prefWidth="96.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="570.0" prefWidth="785.0" styleClass="transparent" stylesheets="@../values/style.css">
+                           <content>
+                              <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
+
+
